@@ -24,12 +24,23 @@ jobs:
       run: |
         python -m pip install --upgrade pip
         pip install build
-        
+    
     - name: Build and Push Docker Image to GCR
-      uses: mr-smithers-excellent/docker-build-push@v4
+      uses: RafikFarhad/push-to-gcr-github-action@v4.1
       with:
-        image: gcr.io/cvs-pcf-to-gke-migration/python
-        tag: p1
-        registry: gcr.io        
-        username: ${{ secrets.GCR_USER }}
-        password: ${{ secrets.GCR_PASSWORD }}
+          gcloud_service_key: ${{ secrets.GCLOUD_SERVICE_KEY }} # can be base64 encoded or plain text
+          registry: gcr.io
+          project_id: cvs-pcf-to-gke-migration
+          image_name: Pythontest
+          image_tag: latest
+          dockerfile: ./Dockerfile
+          context: ./docker
+        
+  #  - name: Build and Push Docker Image to GCR
+  #    uses: mr-smithers-excellent/docker-build-push@v4
+  #    with:
+   #     image: gcr.io/cvs-pcf-to-gke-migration/python
+    #    tag: p1
+    #    #registry: gcr.io        
+     #   username: ${{ secrets.GCR_USER }}
+    #    password: ${{ secrets.GCR_PASSWORD }}
