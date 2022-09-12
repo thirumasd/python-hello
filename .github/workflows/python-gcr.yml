@@ -34,7 +34,7 @@ jobs:
           image_name: pythontest
           image_tag: latest
           dockerfile: ./Dockerfile
-          context: ./docker
+          context: .
         
   #  - name: Build and Push Docker Image to GCR
   #    uses: mr-smithers-excellent/docker-build-push@v4
