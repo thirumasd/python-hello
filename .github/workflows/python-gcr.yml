@@ -31,7 +31,7 @@ jobs:
           gcloud_service_key: ${{ secrets.GCLOUD_SERVICE_KEY }} # can be base64 encoded or plain text
           registry: gcr.io
           project_id: cvs-pcf-to-gke-migration
-          image_name: Pythontest
+          image_name: pythontest
           image_tag: latest
           dockerfile: ./Dockerfile
           context: ./docker
